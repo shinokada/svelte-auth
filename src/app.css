@@ -1,0 +1,70 @@
+:root {
+	font-family: 'Outfit';
+	font-weight: 300;
+	font-size: 112.5%;
+	flex-shrink: 0;
+	--bg-color-1: hsl(180, 1%, 75%);
+	--bg-color-1-5: rgb(0, 87, 87);
+	--bg-color-2: hsl(200, 17%, 12%);
+	--bg-color-2-5: hsl(200, 17%, 14.5%);
+	--bg-color-3: hsl(200, 17%, 17%);
+	--bg-color-3-5: hsl(200, 17%, 21.5%);
+	--sub-color: hsl(200, 17%, 26%);
+	--font-color: hsl(201, 42%, 44%);
+}
+
+* {
+	box-sizing: border-box;
+	scrollbar-width: thin;
+}
+
+body {
+	min-height: 100vh;
+	margin: 0;
+	background: #fff;
+	color: var(--font-color);
+	overflow: hidden;
+}
+
+#svelte {
+	min-height: 100vh;
+	display: flex;
+}
+
+::-webkit-scrollbar {
+	width: 7.5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: transparent;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: var(--bg-color-1-5);
+}
+
+::placeholder,
+::-webkit-input-placeholder {
+	color: var(--sub-color);
+}
+
+:focus {
+	outline: none;
+}
+
+input,
+button {
+	color: inherit;
+	font: inherit;
+	border: none;
+}
+
+button:hover {
+	cursor: pointer;
+}
+
+.bi-arrow-left {
+	color: #fff;
+}
