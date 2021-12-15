@@ -5,7 +5,8 @@ dotenv.config()
 
 // const user = process.env['MAILTRAP_USER']
 // const pass = process.env['MAILTRAP_PASS']
-const host = process.env['DEV_URL']
+// const host = process.env['DEV_URL']
+const host = process.env['PROD_URL']
 const email_from = process.env['EMAIL_FROM']
 const name_from = process.env['NAME_FROM']
 
