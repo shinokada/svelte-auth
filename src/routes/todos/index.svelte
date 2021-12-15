@@ -88,6 +88,12 @@
 		<div class="heading-container">
 			<h1>Todos</h1>
 		</div>
+		<div class="new-container">
+			<form class="new" on:submit|preventDefault={addTodo}>
+				<button class="add" type="submit"><i class="bi bi-plus-lg" /></button>
+				<input class="name" type="text" placeholder="Add a todo" bind:value={text} />
+			</form>
+		</div>
 		<div class="list">
 			{#each todos as todo, index}
 				{#if !todo.completed}
@@ -137,16 +143,13 @@
 				{/if}
 			{/each}
 		</div>
-		<div class="new-container">
-			<form class="new" on:submit|preventDefault={addTodo}>
-				<button class="add" type="submit"><i class="bi bi-plus-lg" /></button>
-				<input class="name" type="text" placeholder="Add a todo" bind:value={text} />
-			</form>
-		</div>
 	</div>
 </div>
 
 <style>
+	.bi {
+		color: #fff;
+	}
 	.content {
 		position: relative;
 		height: 100%;
@@ -162,7 +165,7 @@
 	}
 
 	.list {
-		padding: 10px 40px 88px 40px;
+		padding: 20px;
 	}
 
 	button {
@@ -176,7 +179,7 @@
 
 	.todo {
 		display: flex;
-		background: var(--bg-color-2);
+		background: rgb(121, 210, 230);
 		align-items: center;
 		border-radius: 12px;
 		padding: 10px;
@@ -184,7 +187,7 @@
 	}
 	.todo.completed .name {
 		text-decoration: line-through;
-		color: var(--sub-color);
+		color: rgb(83, 130, 247);
 	}
 	.todo.completed .checkbox i {
 		display: block;
@@ -230,7 +233,7 @@
 	}
 
 	.heading-container {
-		background: var(--bg-color-1);
+		background: #fff;
 		position: sticky;
 		top: 0;
 		width: 100%;
@@ -243,18 +246,17 @@
 	}
 
 	.new-container {
-		margin-top: auto;
-		background: var(--bg-color-1);
-		padding: 10px 40px 20px 40px;
+		background: #fff;
+		padding: 20px;
 		position: sticky;
-		bottom: 0;
+		top: 0;
 		width: 100%;
 		border-radius: 18px;
 	}
 
 	.new {
 		display: flex;
-		background: var(--bg-color-2);
+		background: rgb(211, 234, 255);
 		align-items: center;
 		border-radius: 12px;
 		padding: 10px;
@@ -270,7 +272,7 @@
 		margin-right: 10px;
 		font-size: 20px;
 		line-height: 20px;
-		color: var(--sub-color);
+		color: #fff;
 	}
 	.add:hover {
 		color: var(--font-color);
