@@ -17,7 +17,7 @@
 	export let user
 	let text = ''
 
-	$: console.log(todos)
+	// $: console.log(todos)
 
 	async function loadTodos() {
 		const res = await fetch(`/todos/${user.uid}.json`)
@@ -33,7 +33,7 @@
 			name: text,
 			completed: false
 		}
-		console.log(todo)
+
 		await fetch(`/todos/${user.uid}.json`, {
 			method: 'POST',
 			body: JSON.stringify(todo)
@@ -256,6 +256,7 @@
 
 	.new {
 		display: flex;
+		width: 100%;
 		background: rgb(211, 234, 255);
 		align-items: center;
 		border-radius: 12px;

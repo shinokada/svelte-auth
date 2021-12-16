@@ -15,7 +15,7 @@ export async function get(request) {
 			}
 		}
 	} catch (err) {
-		console.log(err)
+		// console.log(err)
 		return {
 			status: 500,
 			body: {
@@ -44,11 +44,11 @@ export async function post(request) {
 			}
 		}
 	} catch (err) {
-		console.log(err)
+		// console.log(err)
 		return {
 			status: 500,
 			body: {
-				error: 'TP001: An error occured'
+				error: 'TP001: An error occured. '
 			}
 		}
 	}

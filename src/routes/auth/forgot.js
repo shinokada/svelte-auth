@@ -31,7 +31,8 @@ export const post = async ({ body }) => {
 		body: {
 			user: {
 				name: body.name,
-				email: body.email
+        email: body.email,
+        message: "Email sent."
 			}
 		}
 	}

@@ -41,11 +41,11 @@
 				password = ''
 			} else {
 				const data = await res.json()
-				console.log('message: ', data.message)
+				// console.log('message: ', data.message)
 				error = data.message
 			}
 		} catch (err) {
-			console.log(err)
+			// console.log(err)
 			error = 'RES001: An error occured.'
 		}
 	}

@@ -18,7 +18,7 @@
 	<title>About</title>
 </svelte:head>
 
-<div class="content clear">
+<div class="content">
 	<h1>About this app</h1>
 
 	<h2>sveltekit-auth</h2>
@@ -112,9 +112,7 @@ PROD_URL="production-url"
 		height: 100vh;
 		margin-bottom: 40px;
 	}
-	.clear {
-		clear: both;
-	}
+
 	h1 {
 		margin-top: 0;
 	}

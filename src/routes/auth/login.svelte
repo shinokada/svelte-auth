@@ -43,7 +43,7 @@
 				goto('/')
 			} else {
 				const data = await res.json()
-				console.log(data)
+				// console.log(data)
 				error = `LOS001: ${data.message}`
 			}
 		} catch (err) {

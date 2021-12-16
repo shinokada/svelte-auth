@@ -22,7 +22,7 @@
 			// get user details and save it to session then redirect to login
 			// const res = await fetch('/user')
 			const json = await res.json()
-			console.log('res: ', json)
+			// console.log('res: ', json)
 			success = 'Please log in.'
 		} else {
 			error = 'Not able to find your details.'

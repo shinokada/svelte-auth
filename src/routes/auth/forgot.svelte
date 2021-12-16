@@ -50,7 +50,7 @@
 		{#if data}
 			<p>{data}</p>
 		{/if}
-		{#if data}
+		{#if message}
 			<p>{message}</p>
 		{/if}
 		{#if error}

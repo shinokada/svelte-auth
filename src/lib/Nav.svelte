@@ -8,7 +8,6 @@
 		<h1>Sveltekit</h1>
 	</div>
 	<a class:active={$page.path === '/'} sveltekit:prefetch href="/">Home</a>
-	<a class:active={$page.path === '/about'} sveltekit:prefetch href="/about">About</a>
 	{#if $session.user}
 		<a class:active={$page.path === '/todos'} sveltekit:prefetch href="/todos">Todos</a>
 		<a class:active={$page.path === '/profile'} sveltekit:prefetch href="/profile">Profile</a>
