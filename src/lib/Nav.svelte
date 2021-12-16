@@ -5,7 +5,7 @@
 <nav>
 	<div class="header" href="/">
 		<img src="svelte-logo.svg" alt="SvelteKit" />
-		<h1>Auth</h1>
+		<h1>Sveltekit</h1>
 	</div>
 	<a class:active={$page.path === '/'} sveltekit:prefetch href="/">Home</a>
 	<a class:active={$page.path === '/about'} sveltekit:prefetch href="/about">About</a>
@@ -20,19 +20,19 @@
 		display: flex;
 		flex-direction: column;
 		width: 240px;
-		background: var(--bg-color-2);
+		background: #fff;
 		padding: 20px 0 20px 20px;
 	}
 
 	a {
-		color: #fff;
+		color: #000;
 		text-decoration: none;
 		padding: 10px;
 		margin: 3px 0;
 		border-radius: 10px;
 	}
 	a:hover {
-		background: var(--bg-color-2-5);
+		background: rgb(207, 214, 255);
 	}
 
 	.header {

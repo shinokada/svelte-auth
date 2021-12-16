@@ -23,7 +23,6 @@ body {
 	margin: 0;
 	background: #fff;
 	color: var(--font-color);
-	overflow: hidden;
 }
 
 #svelte {
@@ -66,5 +65,37 @@ button:hover {
 }
 
 .bi-arrow-left {
+	color: #fff;
+}
+
+section {
+	width: 100%;
+	height: 100vh;
+	display: flex;
+	color: #fff;
+	justify-content: center;
+	align-items: center;
+}
+form {
+	width: 400px;
+	padding: 20px;
+	border-radius: 18px;
+	background: rgb(51, 114, 162);
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+}
+
+input,
+button {
+	margin-top: 10px;
+	border-radius: 12px;
+	padding: 10px;
+	color: #000;
+	background: rgb(188, 206, 252);
+}
+
+button:hover {
+	background: var(--bg-color-1-5);
 	color: #fff;
 }

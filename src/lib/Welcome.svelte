@@ -10,6 +10,7 @@
 	section {
 		width: 100%;
 		height: 100vh;
+		color: #fff;
 		display: flex;
 		justify-content: center;
 		align-items: center;
@@ -19,7 +20,7 @@
 		width: 400px;
 		padding: 20px;
 		border-radius: 18px;
-		background: var(--bg-color-2);
+		background: rgb(51, 114, 162);
 		display: flex;
 		flex-direction: column;
 	}
@@ -29,8 +30,8 @@
 	}
 
 	a {
-		color: inherit;
-		background: #fff;
+		color: #000;
+		background: rgb(188, 206, 252);
 		text-decoration: none;
 		padding: 10px;
 		border-radius: 12px;

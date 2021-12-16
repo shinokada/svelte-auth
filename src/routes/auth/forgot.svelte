@@ -65,36 +65,6 @@
 </svelte:head>
 
 <style>
-	section {
-		width: 100%;
-		height: 100vh;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-
-	form {
-		width: 400px;
-		padding: 20px;
-		border-radius: 18px;
-		background: var(--bg-color-2);
-		display: flex;
-		flex-direction: column;
-		text-align: center;
-	}
-
-	input,
-	button {
-		margin-top: 10px;
-		border-radius: 12px;
-		padding: 10px;
-		background: #fff;
-	}
-
-	button:hover {
-		background: var(--bg-color-1-5);
-	}
-
 	.heading {
 		display: flex;
 		align-items: center;
