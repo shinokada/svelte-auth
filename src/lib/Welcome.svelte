@@ -1,6 +1,6 @@
 <section>
 	<div class="welcome">
-		<h2>Welcome to Sveltekit Todos</h2>
+		<h2>Welcome to Sveltekit auth</h2>
 		<a href="/auth/login">Login</a>
 		<a href="/auth/register">Register</a>
 	</div>
@@ -30,8 +30,8 @@
 	}
 
 	a {
-		color: #000;
-		background: rgb(188, 206, 252);
+		color: #fff;
+		background: rgb(101, 145, 255);
 		text-decoration: none;
 		padding: 10px;
 		border-radius: 12px;

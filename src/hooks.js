@@ -17,7 +17,7 @@ export const handle = async ({ request, resolve }) => {
 		const client = await clientPromise
 		const db = client.db('Todos')
 		const cookie = await db.collection('cookies').findOne({ cookieId: cookies.session_id })
-		console.log('getting cookie')
+		// console.log('getting cookie')
 
 		// If there is that user, authenticate him and pass his email to context
 		if (cookie) {
@@ -43,6 +43,6 @@ export const handle = async ({ request, resolve }) => {
 // try console logging session in routes' load({ session }) functions
 export const getSession = async (request) => {
 	// Pass cookie with authenticated & email properties to session
-	console.log(request.locals.user)
+	// console.log(request.locals.user)
 	return { user: request.locals.user }
 }

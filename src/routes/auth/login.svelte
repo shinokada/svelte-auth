@@ -111,4 +111,8 @@
 		text-decoration: none;
 		margin: 20px 0;
 	}
+	button {
+		background: rgb(101, 145, 255);
+		color: #fff;
+	}
 </style>

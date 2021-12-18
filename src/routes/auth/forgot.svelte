@@ -85,4 +85,8 @@
 	.back:hover {
 		color: var(--font-color);
 	}
+	button {
+		background: rgb(101, 145, 255);
+		color: #fff;
+	}
 </style>
