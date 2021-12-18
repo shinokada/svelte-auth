@@ -32,29 +32,46 @@
 	})
 </script>
 
-<div class="confirm">
-	<section>
+<section>
+	<div class="confirm">
 		{#if success}
-			<h1>Your email is confirmed. <a href="/auth/login">Go to log in</a></h1>
+			<h1>Your email is confirmed.</h1>
+			<h2><a href="/auth/login">Go to Login</a></h2>
 		{:else}
 			<h1>Error</h1>
 		{/if}
-	</section>
-</div>
+	</div>
+</section>
 
 <style>
 	section {
 		width: 100%;
 		height: 100vh;
 		display: flex;
+		color: #fff;
 		justify-content: center;
 		align-items: center;
 	}
 	.confirm {
 		padding: 20px;
 		color: blue;
+		width: 400px;
+		padding: 20px;
+		border-radius: 18px;
+		background: rgb(51, 114, 162);
+		display: flex;
+		flex-direction: column;
+		text-align: center;
 	}
-	h1 {
-		color: blue;
+	h1,
+	h2 {
+		color: rgb(255, 255, 255);
+	}
+	a {
+		color: rgb(149, 158, 255);
+		text-decoration: none;
+	}
+	a:hover {
+		color: #fff;
 	}
 </style>

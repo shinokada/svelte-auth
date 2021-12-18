@@ -8,6 +8,9 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const secret = process.env['SECRET']
+const mail_method = process.env['MAIL_METHOD']
+console.log('mail_method: ', mail_method)
+console.log('sendgrid api: ',process.env['SENDGRID_API'])
 
 export const post = async ({ body }) => {
 	// Connecting to DB
@@ -48,7 +51,7 @@ export const post = async ({ body }) => {
     body.email,
     token
   );
-  console.log('Mail sent.')
+  console.log('Registration is emailed.')
   
   // moved to confirmation page
   
