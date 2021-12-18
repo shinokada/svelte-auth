@@ -47,7 +47,6 @@ EMAIL_FROM="hello@example.com"
 NAME_FROM="John Doe"
 SENDGRID_USERNAME="sendgrid-username"
 SENDGRIP_API="sendgrid-api-key"
-PROD_URL="production-url"
 ```
 
 You need to have a MongoDB running or create [a free new account](https://account.mongodb.com/account/login).

@@ -1,5 +1,5 @@
 import nodemailer from 'nodemailer'
-import nodemailerSendgrid from 'nodemailer-sendgrid'
+// import nodemailerSendgrid from 'nodemailer-sendgrid'
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -7,8 +7,8 @@ let mail_method = process.env['MAIL_METHOD']
 let user 
 let pass
 
-// const host = process.env['PROD_URL']
-const host = process.env['DEV_URL']
+
+const host = process.env['HOST_URL']
 const email_from = process.env['EMAIL_FROM']
 const name_from = process.env['NAME_FROM']
 let transport
