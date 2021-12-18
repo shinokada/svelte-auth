@@ -2,10 +2,9 @@ import nodemailer from 'nodemailer'
 import dotenv from 'dotenv'
 dotenv.config()
 
-const user = process.env['MAILTRAP_USER']
-const pass = process.env['MAILTRAP_PASS']
-// const host = process.env['PROD_URL']
-const host = process.env['DEV_URL']
+const user = process.env['MAIL_USER']
+const pass = process.env['MAIL_PASS']
+const host = process.env['HOST_URL']
 const email_from = process.env['EMAIL_FROM']
 const name_from = process.env['NAME_FROM']
 
