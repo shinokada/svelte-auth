@@ -52,5 +52,9 @@
 	}
 	.confirm {
 		padding: 20px;
+		color: blue;
+	}
+	h1 {
+		color: blue;
 	}
 </style>
