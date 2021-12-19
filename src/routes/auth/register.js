@@ -4,6 +4,7 @@ import { v4 as uuid } from 'uuid'
 import clientPromise from '$lib/db'
 import jwt from 'jsonwebtoken'
 import { sendConfirmationEmail } from '$lib/nodemailer';
+import { sendGridConfirmationEmail } from '$lib/sendgridmailer';
 import dotenv from 'dotenv'
 dotenv.config()
 
@@ -46,12 +47,23 @@ export const post = async ({ body }) => {
     status: "Pending"
   })
   
-  sendConfirmationEmail(
-    body.name,
-    body.email,
-    token
-  );
-  console.log('Registration is emailed.')
+  if (mail_method === "mailtrap") {
+    sendConfirmationEmail(
+      body.name,
+      body.email,
+      token
+      );
+      console.log('Registration is emailed.')
+  }
+
+  if (mail_method === "sendgrid") {
+    sendGridConfirmationEmail(
+      body.name,
+      body.email,
+      token
+    );
+      console.log('Registration is emailed.')
+  }
   
   // moved to confirmation page
   
