@@ -33,17 +33,12 @@ if (mail_method === "mailtrap") {
       user: 'apikey',
       pass: process.env['SENDGRID_API'],
     }
-  }
-  //   nodemailerSendgrid({
-  //     apiKey: process.env['SENDGRID_API']
-  // })
-  );
+  });
 }
 
 export const sendConfirmationEmail = (name, email, confirmationCode) => {
   transport.sendMail({
     from: `${name_from} <${email_from}>`,
-    // from: "Grade Chart <hello@gradechart.com>",
     to: email,
     subject: "Please confirm your account",
     html: `<h1>Email Confirmation</h1>
@@ -57,8 +52,7 @@ export const sendConfirmationEmail = (name, email, confirmationCode) => {
 
 export const sendForgotEmail = (name, email, confirmationCode) => {
   transport.sendMail({
-    from: "Grade Chart <hello@gradechart.com>",
-    // from: `${name_from} <${email_from}>`,
+    from: `${name_from} <${email_from}>`,
     to: email,
     subject: "Please reset your password.",
     html: `<h1>Reset your password</h1>
