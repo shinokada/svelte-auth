@@ -30,3 +30,28 @@ export const sendGridConfirmationEmail = (name, email, confirmationCode) => {
       console.error(error)
     })
 }
+
+export const sendGridForgotEmail = (name, email, confirmationCode) => {
+  sgMail.setApiKey(process.env['SENDGRID_API'])
+  const msg = {
+    from: `${name_from} <${email_from}>`,
+    to: email,
+    subject: "Please reset your password.",
+    text: `Reset your password: Hello ${name}.
+    Please reset your password by clicking on the following link.
+    Click here, ${host}/auth/reset/${confirmationCode}`,
+    html: `<h1>Reset your password</h1>
+        <h2>Hello ${name}</h2>
+        <p>Please reset your password by clicking on the following link.</p>
+        <a href=${host}/auth/reset/${confirmationCode}> Click here</a>
+        </div>`,
+  }
+  sgMail
+    .send(msg)
+    .then(() => {
+      console.log('Email sent')
+    })
+    .catch((error) => {
+      console.error(error)
+    })
+}
