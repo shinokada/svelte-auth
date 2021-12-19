@@ -20,7 +20,7 @@ export const post = async ({ body }) => {
     return {
 			status: 401,
 			body: {
-				message: 'FOJ001: Error occured.'
+				message: 'This demo site delete all data at 12:00:00 GMT+0000. Your email is not in our database. Please register.'
 			}
 		}
   }

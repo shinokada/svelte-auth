@@ -68,7 +68,6 @@
 		DEV_URL="http://localhost:3000" 
 		EMAIL_FROM="hello@example.com" 
 		NAME_FROM="John Doe"
-		SENDGRID_USERNAME="sendgrid-username" 
 		SENDGRIP_API="sendgrid-api-key"
 			</code>
 		</pre>

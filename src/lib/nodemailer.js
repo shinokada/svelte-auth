@@ -27,7 +27,7 @@ if (mail_method === "mailtrap") {
 } else {
   transport = nodemailer.createTransport({
     host: 'smtp.sendgrid.net',
-    port: 465,
+    port: 587,
     secure: true,
     auth: {
       user: 'apikey',
