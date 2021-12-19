@@ -1,7 +1,10 @@
 import { sendForgotEmail } from '$lib/nodemailer';
+import { sendGridForgotEmail } from '$lib/sendgridmailer';
 import clientPromise from '$lib/db'
 import dotenv from 'dotenv'
 dotenv.config()
+
+const mail_method = process.env['MAIL_METHOD']
 
 export const post = async ({ body }) => {
 	const client = await clientPromise
@@ -11,11 +14,24 @@ export const post = async ({ body }) => {
   const user = await db.collection('users').findOne({ email: body.email })
 
   if (user) {
-    sendForgotEmail(
-      user.name,
-      user.email,
-      user.confirmationCode
-    );
+    if (mail_method === "mailtrap") {
+      sendForgotEmail(
+        user.name,
+        user.email,
+        user.confirmationCode
+      );
+        console.log('Registration is emailed.')
+    }
+  
+    if (mail_method === "sendgrid") {
+      sendGridForgotEmail(
+        body.name,
+        body.email,
+        user.confirmationCode
+      );
+        console.log('Registration is emailed.')
+    }
+    
   } else {
     return {
 			status: 401,
