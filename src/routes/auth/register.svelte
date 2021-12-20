@@ -46,7 +46,7 @@
 			}
 		} catch (err) {
 			// console.log(err)
-			error = 'RES001: An error occured.'
+			error = `RESS001: An error occured. ${err}`
 		}
 	}
 </script>

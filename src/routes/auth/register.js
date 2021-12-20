@@ -53,7 +53,7 @@ export const post = async ({ body }) => {
       body.email,
       token
       );
-      console.log('Registration email is sent.')
+      console.log('Mailtrap registration email is sent.')
   }
 
   if (mail_method === "sendgrid") {
@@ -62,7 +62,7 @@ export const post = async ({ body }) => {
       body.email,
       token
     );
-      console.log('Registration is emailed.')
+      console.log('SendGrid registration is emailed.')
   }
   
   // moved to confirmation page
