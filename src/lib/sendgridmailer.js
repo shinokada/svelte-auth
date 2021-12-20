@@ -7,8 +7,8 @@ const email_from = process.env['EMAIL_FROM']
 const name_from = process.env['NAME_FROM']
 
 
-export const sendGridConfirmationEmail = (name, email, confirmationCode) => {
-  sgMail.setApiKey(process.env['SENDGRID_API'])
+export const sendGridConfirmationEmail = async (name, email, confirmationCode) => {
+  await sgMail.setApiKey(process.env['SENDGRID_API'])
   const msg = {
     to: email,
     from: `${name_from} <${email_from}>`,
@@ -22,7 +22,7 @@ export const sendGridConfirmationEmail = (name, email, confirmationCode) => {
     <a href=${host}/auth/confirm/${confirmationCode}> Click here</a>
     </div>`,
   }
-  sgMail
+  await sgMail
     .send(msg)
     .then(() => {
       console.log('Email sent')
