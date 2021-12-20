@@ -9,36 +9,6 @@ const SENDGRID_API = 'https://api.sendgrid.com/v3/mail/send'
 const SENDGRID_API_KEY = process.env['SENDGRID_API']
 
 export const sendGridConfirmationEmail = async (name, email, confirmationCode) => {
-//   await fetch(SENDGRID_API, {
-//     method: 'POST',
-//     headers: {
-//       'Content-Type': 'application/json',
-//       Authorization: `Bearer ${SENDGRID_API_KEY}`
-//     },
-//     body: JSON.stringify({
-//       personalizations: [
-//         {
-//           to: [
-//             {
-//               email
-//             }
-//           ],
-//           subject: 'Demo success :)'
-//         }
-//       ],
-//       from: {
-//         email: email_from,
-//         name: 'Test SendGrid'
-//       },
-//       content: [
-//         {
-//           type: 'text/html',
-//           value: `Congratulations <b>${name}</b>, you just sent an email with sendGrid. ${confirmationCode}`
-//         }
-//       ]
-//     })
-// });
-  
   await sgMail.setApiKey(SENDGRID_API_KEY)
   const msg = {
     to: email,
@@ -63,8 +33,8 @@ export const sendGridConfirmationEmail = async (name, email, confirmationCode) =
     })
 }
 
-export const sendGridForgotEmail = (name, email, confirmationCode) => {
-  sgMail.setApiKey(SENDGRID_API_KEY)
+export const sendGridForgotEmail = async (name, email, confirmationCode) => {
+  await sgMail.setApiKey(SENDGRID_API_KEY)
   const msg = {
     from: `${email_from}`,
     to: email,
@@ -78,7 +48,7 @@ export const sendGridForgotEmail = (name, email, confirmationCode) => {
         <a href=${host}/auth/reset/${confirmationCode}> Click here</a>
         </div>`,
   }
-  sgMail
+  await sgMail
     .send(msg)
     .then(() => {
       console.log('Email sent')
