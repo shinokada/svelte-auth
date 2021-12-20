@@ -38,6 +38,7 @@ export const sendGridConfirmationEmail = async (name, email, confirmationCode) =
 //       ]
 //     })
 // });
+  
   await sgMail.setApiKey(SENDGRID_API_KEY)
   const msg = {
     to: email,
