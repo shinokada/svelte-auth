@@ -53,7 +53,7 @@ export const post = async ({ body }) => {
       body.email,
       token
       );
-      console.log('Registration is emailed.')
+      console.log('Registration email is sent.')
   }
 
   if (mail_method === "sendgrid") {
