@@ -27,7 +27,7 @@ export const sendGridConfirmationEmail = async (name, email, confirmationCode) =
         }
       ],
       from: {
-        email: 'noreply@demo.com',
+        email: email_from,
         name: 'Test SendGrid'
       },
       content: [
