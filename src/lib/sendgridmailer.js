@@ -5,7 +5,8 @@ dotenv.config()
 const host = process.env['HOST_URL']
 const email_from = process.env['EMAIL_FROM']
 const name_from = process.env['NAME_FROM']
-  
+
+
 export const sendGridConfirmationEmail = (name, email, confirmationCode) => {
   sgMail.setApiKey(process.env['SENDGRID_API'])
   const msg = {
