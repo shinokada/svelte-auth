@@ -39,7 +39,7 @@
 			<h1>Your email is confirmed.</h1>
 			<h2><a href="/auth/login">Go to Login</a></h2>
 		{:else}
-			<h1>Loading ...</h1>
+			<h1>Checking ...</h1>
 		{/if}
 		{#if error}
 			{error}
