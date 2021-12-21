@@ -4,13 +4,13 @@ dotenv.config()
 
 const host = process.env['HOST_URL']
 const email_from = process.env['EMAIL_FROM']
-const name_from = process.env['NAME_FROM']
-  
-export const sendGridConfirmationEmail = (name, email, confirmationCode) => {
-  sgMail.setApiKey(process.env['SENDGRID_API'])
+const SENDGRID_API_KEY = process.env['SENDGRID_API']
+
+export const sendGridConfirmationEmail = async (name, email, confirmationCode) => {
+  await sgMail.setApiKey(SENDGRID_API_KEY)
   const msg = {
     to: email,
-    from: `${name_from} <${email_from}>`,
+    from: `${email_from}`,
     subject: "Please confirm your account",
     text: `Email Confirmation: Hello ${name}.
     Please confirm your email by clicking on the following link.
@@ -21,7 +21,7 @@ export const sendGridConfirmationEmail = (name, email, confirmationCode) => {
     <a href=${host}/auth/confirm/${confirmationCode}> Click here</a>
     </div>`,
   }
-  sgMail
+  await sgMail
     .send(msg)
     .then(() => {
       console.log('Email sent')
@@ -31,10 +31,10 @@ export const sendGridConfirmationEmail = (name, email, confirmationCode) => {
     })
 }
 
-export const sendGridForgotEmail = (name, email, confirmationCode) => {
-  sgMail.setApiKey(process.env['SENDGRID_API'])
+export const sendGridForgotEmail = async (name, email, confirmationCode) => {
+  await sgMail.setApiKey(SENDGRID_API_KEY)
   const msg = {
-    from: `${name_from} <${email_from}>`,
+    from: `${email_from}`,
     to: email,
     subject: "Please reset your password.",
     text: `Reset your password: Hello ${name}.
@@ -46,7 +46,7 @@ export const sendGridForgotEmail = (name, email, confirmationCode) => {
         <a href=${host}/auth/reset/${confirmationCode}> Click here</a>
         </div>`,
   }
-  sgMail
+  await sgMail
     .send(msg)
     .then(() => {
       console.log('Email sent')

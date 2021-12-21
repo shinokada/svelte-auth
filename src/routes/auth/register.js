@@ -53,7 +53,7 @@ export const post = async ({ body }) => {
       body.email,
       token
       );
-      console.log('Registration is emailed.')
+      console.log('Mailtrap registration email is sent.')
   }
 
   if (mail_method === "sendgrid") {
@@ -62,29 +62,8 @@ export const post = async ({ body }) => {
       body.email,
       token
     );
-      console.log('Registration is emailed.')
+      console.log('SendGrid registration is emailed.')
   }
-  
-  // moved to confirmation page
-  
-	// Add cookie with user's email to DB
-	// const cookieId = uuid()
-	// await db.collection('cookies').insertOne({
-	// 	cookieId: cookieId,
-	// 	uid: uid
-	// })
-
-	// Set cookie
-	// If you want cookies to be passed alongside user when they redirect to another website using a link, change sameSite to 'lax'
-	// If you don't want cookies to be valid everywhere in your app, modify the path property accordingly
-	// const headers = {
-	// 	'Set-Cookie': cookie.serialize('session_id', cookieId, {
-	// 		httpOnly: true,
-	// 		maxAge: 60 * 60 * 24 * 7,
-	// 		sameSite: 'strict',
-	// 		path: '/'
-	// 	})
-	// }
 
 	return {
 		status: 200,
