@@ -12,6 +12,7 @@
 
 	const confirmationCode = $page.params.slug
 	let success
+	let error
 
 	onMount(async () => {
 		const res = await fetch('/auth/confirm', {
@@ -38,7 +39,10 @@
 			<h1>Your email is confirmed.</h1>
 			<h2><a href="/auth/login">Go to Login</a></h2>
 		{:else}
-			<h1>Error</h1>
+			<h1>Loading ...</h1>
+		{/if}
+		{#if error}
+			{error}
 		{/if}
 	</div>
 </section>
