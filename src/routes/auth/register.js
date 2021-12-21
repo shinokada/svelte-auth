@@ -48,7 +48,7 @@ export const post = async ({ body }) => {
   })
   
   if (mail_method === "mailtrap") {
-    sendConfirmationEmail(
+    await sendConfirmationEmail(
       body.name,
       body.email,
       token
@@ -57,7 +57,7 @@ export const post = async ({ body }) => {
   }
 
   if (mail_method === "sendgrid") {
-    sendGridConfirmationEmail(
+    await sendGridConfirmationEmail(
       body.name,
       body.email,
       token

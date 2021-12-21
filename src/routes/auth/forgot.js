@@ -15,7 +15,7 @@ export const post = async ({ body }) => {
 
   if (user) {
     if (mail_method === "mailtrap") {
-      sendForgotEmail(
+      await sendForgotEmail(
         user.name,
         user.email,
         user.confirmationCode
@@ -24,7 +24,7 @@ export const post = async ({ body }) => {
     }
   
     if (mail_method === "sendgrid") {
-      sendGridForgotEmail(
+      await sendGridForgotEmail(
         body.name,
         body.email,
         user.confirmationCode
