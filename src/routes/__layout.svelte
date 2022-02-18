@@ -8,9 +8,10 @@
 
 <script>
 	import '../app.css'
+	import 'flowbite/dist/flowbite.css'
 	import { session } from '$app/stores'
 	import { fly } from 'svelte/transition'
-	import Nav from '$lib/Nav.svelte'
+	import Nav from './Nav.svelte'
 	export let key
 </script>
 
@@ -40,24 +41,3 @@
 		{/key}
 	</div>
 {/if}
-
-<style>
-	main {
-		width: 100%;
-		background: #fff;
-		height: calc(100vh - 40px);
-		border-radius: 18px;
-		margin: 20px;
-	}
-
-	.content-container {
-		height: 100%;
-		width: 100%;
-	}
-
-	.background {
-		background: #fff;
-		height: 100%;
-		width: 100%;
-	}
-</style>
