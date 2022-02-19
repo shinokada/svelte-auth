@@ -11,13 +11,16 @@
 </script>
 
 <script>
+	import { Alert } from 'svelte-flow'
 	let error
 	// Variables bound to respective inputs via bind:value
 	let email
 	let password
 	let name
+	let lostPasswordLink
 
-	export let message
+	let message
+	let rememberMe
 
 	const register = async () => {
 		try {
@@ -55,66 +58,94 @@
 	<title>Register</title>
 </svelte:head>
 
-<section>
-	<form on:submit|preventDefault={register}>
+<div
+	class="p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700"
+>
+	<form class="space-y-6" on:submit|preventDefault={register}>
 		{#if message}
-			<div class="message">
+			<Alert alertId="alert-green" color="green" closeBtn="true">
 				{message}
-			</div>
+			</Alert>
 		{/if}
-		<div class="heading">
-			<a class="back" href="/"><i class="bi bi-arrow-left" /></a>
-			<h2>Register</h2>
+		<h3 class="text-xl font-medium text-gray-900 dark:text-white">Register</h3>
+		<div>
+			<label
+				for="name"
+				class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name</label
+			>
+			<input
+				type="text"
+				required
+				name="name"
+				placeholder="Enter your name"
+				class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+				bind:value={name}
+			/>
 		</div>
-		<input type="text" required name="name" placeholder="Enter your name" bind:value={name} />
-		<input
-			type="email"
-			required
-			name="email"
-			placeholder="Enter your email"
-			bind:value={email}
-		/>
-		<input
-			type="password"
-			required
-			name="password"
-			placeholder="Enter your password"
-			bind:value={password}
-		/>
+		<div>
+			<label
+				for="email"
+				class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Email</label
+			>
+			<input
+				type="email"
+				required
+				name="email"
+				placeholder="Enter your email"
+				class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+				bind:value={email}
+			/>
+		</div>
+		<div>
+			<label
+				for="password"
+				class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+				>Your password</label
+			>
+			<input
+				type="password"
+				required
+				name="password"
+				placeholder="Enter your password"
+				class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+				bind:value={password}
+			/>
+		</div>
 		{#if error}
 			<p>{error}</p>
 		{/if}
-		<button type="submit">Register</button>
+		<div class="flex items-start">
+			{#if rememberMe}
+				<div class="flex items-start">
+					<div class="flex items-center h-5">
+						<input
+							id="remember"
+							aria-describedby="remember"
+							type="checkbox"
+							class="w-4 h-4 bg-gray-50 rounded border border-gray-300 focus:ring-3 focus:ring-blue-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-blue-600 dark:ring-offset-gray-800"
+							required=""
+						/>
+					</div>
+					<div class="ml-3 text-sm">
+						<label for="remember" class="font-medium text-gray-900 dark:text-gray-300"
+							>Remember me</label
+						>
+					</div>
+				</div>
+			{/if}
+			{#if lostPasswordLink}
+				<a
+					href={lostPasswordLink.href}
+					rel={lostPasswordLink.rel}
+					class="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
+					>Lost Password?</a
+				>
+			{/if}
+		</div>
+		<button
+			type="submit"
+			class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+			>Register</button
+		>
 	</form>
-</section>
-
-<style>
-	.heading {
-		display: flex;
-		align-items: center;
-		margin-bottom: 10px;
-	}
-
-	h2 {
-		width: 100%;
-		text-align: center;
-		margin-right: 24px;
-	}
-
-	.back {
-		color: var(--sub-color);
-		font-size: 24px;
-		height: 24px;
-	}
-	.back:hover {
-		color: var(--font-color);
-	}
-
-	.message {
-		color: #fff;
-	}
-	button {
-		background: rgb(101, 145, 255);
-		color: #fff;
-	}
-</style>
+</div>
