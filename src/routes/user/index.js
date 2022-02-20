@@ -1,10 +1,15 @@
 import clientPromise from '$lib/db'
+import dotenv from 'dotenv'
+dotenv.config()
+
+const dbName = process.env['DB_NAME']
 
 export const get = async (context) => {
 	// Connecting to DB
 	// All database code can only run inside async functions as it uses await
 	const client = await clientPromise
-	const db = client.db('Todos')
+	// const db = client.db('Todos')
+  const db = client.db(dbName)
 
 	// Checking for auth coming from hooks' handle({ request, resolve })
 	if (!context.locals.user) {

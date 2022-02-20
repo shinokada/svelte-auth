@@ -1,5 +1,9 @@
 import cookie from 'cookie'
 import clientPromise from '$lib/db'
+import dotenv from 'dotenv'
+dotenv.config()
+
+const dbName = process.env['DB_NAME']
 
 // Sets context in endpoints
 // Try console logging context in your endpoints' HTTP methods to understand the structure
@@ -15,7 +19,8 @@ export const handle = async ({ request, resolve }) => {
 		// Searching DB for the user with the right cookie
 		// All database code can only run inside async functions as it uses await
 		const client = await clientPromise
-		const db = client.db('Todos')
+		// const db = client.db('Todos')
+    const db = client.db(dbName)
 		const cookie = await db.collection('cookies').findOne({ cookieId: cookies.session_id })
 		// console.log('getting cookie')
 

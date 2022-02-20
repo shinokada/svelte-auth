@@ -1,8 +1,10 @@
 import clientPromise from '$lib/db'
 import * as cookie from 'cookie'
 import { v4 as uuid } from 'uuid'
+import dotenv from 'dotenv'
+dotenv.config()
 
-
+const dbName = process.env['DB_NAME']
 // todo 
 // if status is Active redirect to home page
 
@@ -11,7 +13,8 @@ export const post = async (context) => {
   // console.log('mycode: ', confirmationCode)
   try {
     const client = await clientPromise
-    const db = client.db('Todos')
+    // const db = client.db('Todos')
+    const db = client.db(dbName)
     const user = await db.collection('users').findOne({
       confirmationCode
     })
@@ -67,7 +70,8 @@ export const post = async (context) => {
 
 async function updateStatus (user) {
   const client = await clientPromise
-  const db = client.db('Todos')
+  // const db = client.db('Todos')
+  const db = client.db(dbName)
   const collection = db.collection('users')
   await collection.updateOne(
     { _id: user._id },

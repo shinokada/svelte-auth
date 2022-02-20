@@ -3,9 +3,12 @@ import clientPromise from '$lib/db'
 import dotenv from 'dotenv'
 dotenv.config()
 
+const dbName = process.env['DB_NAME']
+
 export const put = async ( context ) => {
   const client = await clientPromise
-  const db = client.db('Todos')
+  // const db = client.db('Todos')
+  const db = client.db(dbName)
   const collection = db.collection('users')
 
 	// Is there a user with such an email?

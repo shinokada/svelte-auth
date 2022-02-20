@@ -1,12 +1,17 @@
 import clientPromise from '$lib/db'
 import { ObjectId } from 'mongodb'
+import dotenv from 'dotenv'
+dotenv.config()
+
+const dbName = process.env['DB_NAME']
 
 export async function get(request) {
 	try {
 		const client = await clientPromise
 		// const db = client.db('Todos')
 		// const collection = client.db('Todos').collection('todos')
-		const todos = await client.db('Todos').collection('todos').find({ uid: request.params.uid }).toArray()
+		// const todos = await client.db('Todos').collection('todos').find({ uid: request.params.uid }).toArray()
+    const todos = await client.db(dbName).collection('todos').find({ uid: request.params.uid }).toArray()
 
 		return {
 			status: 200,
@@ -28,7 +33,8 @@ export async function get(request) {
 export async function post(request) {
 	try {
 		const client = await clientPromise
-		const db = client.db('Todos')
+		// const db = client.db('Todos')
+    const db = client.db(dbName)
 		const collection = db.collection('todos')
 		const todo = JSON.parse(request.body)
 		await collection.insertOne({
@@ -57,7 +63,8 @@ export async function post(request) {
 export async function put(request) {
 	try {
 		const client = await clientPromise
-		const db = client.db('Todos')
+		// const db = client.db('Todos')
+    const db = client.db(dbName)
 		const collection = db.collection('todos')
 		const todo = JSON.parse(request.body)
 		await collection.updateOne(
@@ -85,7 +92,8 @@ export async function put(request) {
 export async function del(request) {
 	try {
 		const client = await clientPromise
-		const db = client.db('Todos')
+		// const db = client.db('Todos')
+    const db = client.db(dbName)
 		const collection = db.collection('todos')
 		const todo = JSON.parse(request.body)
 		await collection.deleteOne({ _id: ObjectId(todo._id) })

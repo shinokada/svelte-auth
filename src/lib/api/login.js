@@ -5,10 +5,12 @@ import clientPromise from '$lib/db'
 import dotenv from 'dotenv'
 dotenv.config()
 
+const dbName = process.env['DB_NAME']
+
 export const post = async ({ body }) => {
-  const client = await clientPromise
-  const dbName = process.env['DB_NAME']
-	const db = client.db(dbName)
+	const client = await clientPromise
+	// const db = client.db('Todos')
+  const db = client.db(dbName)
 
 	const user = await db.collection('users').findOne({ email: body.email })
   

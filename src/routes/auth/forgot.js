@@ -5,10 +5,12 @@ import dotenv from 'dotenv'
 dotenv.config()
 
 const mail_method = process.env['MAIL_METHOD']
+const dbName = process.env['DB_NAME']
 
 export const post = async ({ body }) => {
 	const client = await clientPromise
-	const db = client.db('Todos')
+	// const db = client.db('Todos')
+  const db = client.db(dbName)
 
 	// Is there a user with such an email?
   const user = await db.collection('users').findOne({ email: body.email })
