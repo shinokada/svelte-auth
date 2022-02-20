@@ -30,15 +30,15 @@
 	<div
 		class="p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700 w-full"
 	>
-		<div class="confirm">
-			{#if success}
-				<h1 class="text-3xl w-full">Your email is confirmed.</h1>
-				<a href="/auth/login">
-					<Button name="Go to Login" textSize="text-sm" />
-				</a>
-			{:else}
-				<Alert alertId="alert-red" color="red" closeBtn="true">Error</Alert>
-			{/if}
-		</div>
+		{#if success}
+			<h1 class="text-xl w-full mb-4 font-medium text-gray-900 dark:text-white">
+				Your email is confirmed.
+			</h1>
+			<a href="/auth/login" class="py-4">
+				<Button name="Go to Login" textSize="text-sm" />
+			</a>
+		{:else}
+			<Alert alertId="alert-red" color="red" closeBtn="true">Error</Alert>
+		{/if}
 	</div>
 </div>

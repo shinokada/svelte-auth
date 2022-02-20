@@ -1,22 +1,42 @@
 <script context="module">
-	export const load = async ({ page }) => ({
-		props: {
-			key: page.path
-		}
-	})
+	// export const load = async ({ url }) => ({
+	// 	props: {
+	// 		key: url.path
+	// 	}
+	// })
 </script>
 
 <script>
 	import '../app.css'
 	import 'flowbite/dist/flowbite.css'
-	import { session } from '$app/stores'
+	import { session, page } from '$app/stores'
 	import { fly } from 'svelte/transition'
 	import Nav from './Nav.svelte'
 	export let key
+	import { DarkMode, Navbar } from 'svelte-flow'
+	let menus = [
+		{
+			name: 'Home',
+			link: '/',
+			rel: undefined
+		},
+		{
+			name: 'Todos',
+			link: '/todos',
+			rel: undefined
+		},
+		{
+			name: 'Profile',
+			link: '/profile',
+			rel: undefined
+		}
+	]
 </script>
 
+<DarkMode />
+
 {#if $session.user}
-	<Nav />
+	<Navbar {menus} />
 	<main class="with-nav">
 		{#key key}
 			<div

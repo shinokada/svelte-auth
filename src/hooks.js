@@ -1,4 +1,4 @@
-import cookie from 'cookie'
+import { parse } from 'cookie'
 import {clientPromise} from '$lib/index'
 import dotenv from 'dotenv'
 dotenv.config()
@@ -7,12 +7,12 @@ const dbName = process.env['DB_NAME']
 
 // Sets context in endpoints
 // Try console logging context in your endpoints' HTTP methods to understand the structure
-export const handle = async ({ request, resolve }) => {
+export const handle = async ({ event, resolve }) => {
 	// Connecting to DB
 	// All database code can only run inside async functions as it uses await
 
-	// Getting cookies from request headers - all requests have cookies on them
-	const cookies = cookie.parse(request.headers.cookie || '')
+	// Getting cookies from event headers - all events have cookies on them
+	const cookies = parse(event.request.headers.get('cookie') || '')
 
 	// If there are no cookies, the user is not authenticated
 	if (cookies.session_id) {
@@ -26,28 +26,29 @@ export const handle = async ({ request, resolve }) => {
 
 		// If there is that user, authenticate him and pass his email to context
 		if (cookie) {
-			request.locals.user = {
+			event.locals.user = {
 				uid: cookie.uid
 			}
 		}
 	}
 
-	const response = await resolve(request)
-
-	return {
-		...response,
-		headers: {
-			...response.headers
-			// You can add custom headers here
-			// 'x-custom-header': 'potato'
-		}
-	}
+  const response = await resolve(event)
+  console.log('response from hook: ', response)
+  return response
+	// return {
+	// 	...response,
+	// 	headers: {
+	// 		...response.headers
+	// 		// You can add custom headers here
+	// 		// 'x-custom-header': 'potato'
+	// 	}
+	// }
 }
 
 // Sets session on client-side
 // try console logging session in routes' load({ session }) functions
-export const getSession = async (request) => {
+export const getSession = async (event) => {
 	// Pass cookie with authenticated & email properties to session
-	// console.log(request.locals.user)
-	return { user: request.locals.user }
+	// console.log(event.locals.user)
+	return { user: event.locals.user }
 }

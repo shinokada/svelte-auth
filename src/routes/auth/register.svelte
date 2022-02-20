@@ -49,7 +49,7 @@
 				error = data.message
 			}
 		} catch (err) {
-			// console.log(err)
+			console.log(err)
 			error = 'RES001: An error occured.'
 		}
 	}
