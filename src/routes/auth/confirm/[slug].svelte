@@ -8,7 +8,7 @@
 	let success
 
 	onMount(async () => {
-		const res = await fetch('/auth/confirm', {
+		const res = await fetch('/auth/api/confirm', {
 			method: 'POST',
 			body: JSON.stringify(confirmationCode)
 		})

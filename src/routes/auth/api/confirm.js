@@ -1,4 +1,4 @@
-import clientPromise from '$lib/db'
+import {clientPromise} from '$lib/index'
 import * as cookie from 'cookie'
 import { v4 as uuid } from 'uuid'
 import dotenv from 'dotenv'

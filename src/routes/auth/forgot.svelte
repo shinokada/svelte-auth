@@ -9,7 +9,7 @@
 
 	const forgot = async () => {
 		try {
-			const res = await fetch('/auth/forgot', {
+			const res = await fetch('/auth/api/forgot', {
 				method: 'POST',
 				body: JSON.stringify({
 					email

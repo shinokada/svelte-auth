@@ -44,7 +44,7 @@
     */
 
 	async function logout() {
-		const res = await fetch('/auth/logout', {
+		const res = await fetch('/auth/api/logout', {
 			method: 'POST'
 		})
 		$session.user = null

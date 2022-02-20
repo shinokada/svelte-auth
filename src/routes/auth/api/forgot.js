@@ -1,6 +1,4 @@
-import { sendForgotEmail } from '$lib/nodemailer';
-import { sendGridForgotEmail } from '$lib/sendgridmailer';
-import clientPromise from '$lib/db'
+import { clientPromise, sendForgotEmail, sendGridForgotEmail } from '$lib/index';
 import dotenv from 'dotenv'
 dotenv.config()
 

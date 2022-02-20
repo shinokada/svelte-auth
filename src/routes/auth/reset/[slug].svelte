@@ -16,7 +16,7 @@
 
 	const resetpw = async () => {
 		try {
-			const res = await fetch('/auth/reset', {
+			const res = await fetch('/auth/api/reset', {
 				method: 'PUT',
 				body: JSON.stringify({
 					email: email,

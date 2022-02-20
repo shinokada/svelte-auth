@@ -1,7 +1,7 @@
 import stringHash from 'string-hash'
 import * as cookie from 'cookie'
 import { v4 as uuid } from 'uuid'
-import clientPromise from '$lib/db'
+import {clientPromise} from '$lib/index'
 import dotenv from 'dotenv'
 dotenv.config()
 

@@ -1,5 +1,5 @@
 import cookie from 'cookie'
-import clientPromise from '$lib/db'
+import {clientPromise} from '$lib/index'
 import dotenv from 'dotenv'
 dotenv.config()
 

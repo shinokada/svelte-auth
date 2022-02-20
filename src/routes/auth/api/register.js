@@ -1,10 +1,8 @@
 import stringHash from 'string-hash'
 // import * as cookie from 'cookie'
 import { v4 as uuid } from 'uuid'
-import clientPromise from '$lib/db'
+import { clientPromise, sendConfirmationEmail, sendGridConfirmationEmail } from '$lib/index'
 import jwt from 'jsonwebtoken'
-import { sendConfirmationEmail } from '$lib/nodemailer';
-import { sendGridConfirmationEmail } from '$lib/sendgridmailer';
 import dotenv from 'dotenv'
 dotenv.config()
 
