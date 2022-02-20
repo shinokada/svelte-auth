@@ -1,14 +1,8 @@
-<script context="module">
-	// export async function load(ctx) {
-	// 	let slug = ctx.page.params.slug
-	// 	return { props: { slug } }
-	// }
-</script>
-
 <script>
 	import { onMount } from 'svelte'
 	import { page } from '$app/stores'
 	import { goto } from '$app/navigation'
+	import { Button, Alert } from 'svelte-flow'
 
 	const confirmationCode = $page.params.slug
 	let success
@@ -32,46 +26,19 @@
 	})
 </script>
 
-<section>
-	<div class="confirm">
-		{#if success}
-			<h1>Your email is confirmed.</h1>
-			<h2><a href="/auth/login">Go to Login</a></h2>
-		{:else}
-			<h1>Error</h1>
-		{/if}
+<div class="container mt-4 flex flex-wrap justify-center mx-auto pt-16">
+	<div
+		class="p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700 w-full"
+	>
+		<div class="confirm">
+			{#if success}
+				<h1 class="text-3xl w-full">Your email is confirmed.</h1>
+				<a href="/auth/login">
+					<Button name="Go to Login" textSize="text-sm" />
+				</a>
+			{:else}
+				<Alert alertId="alert-red" color="red" closeBtn="true">Error</Alert>
+			{/if}
+		</div>
 	</div>
-</section>
-
-<style>
-	section {
-		width: 100%;
-		height: 100vh;
-		display: flex;
-		color: #fff;
-		justify-content: center;
-		align-items: center;
-	}
-	.confirm {
-		padding: 20px;
-		color: blue;
-		width: 400px;
-		padding: 20px;
-		border-radius: 18px;
-		background: rgb(51, 114, 162);
-		display: flex;
-		flex-direction: column;
-		text-align: center;
-	}
-	h1,
-	h2 {
-		color: rgb(255, 255, 255);
-	}
-	a {
-		color: rgb(149, 158, 255);
-		text-decoration: none;
-	}
-	a:hover {
-		color: #fff;
-	}
-</style>
+</div>

@@ -29,10 +29,10 @@
 		{/key}
 	</main>
 {:else}
-	<div class="background">
+	<div class="container mx-auto px-4 pt-4">
 		{#key key}
 			<div
-				class="content-container"
+				class="w-full h-full"
 				in:fly={{ x: -5, duration: 200, delay: 200 }}
 				out:fly|local={{ x: 5, duration: 200 }}
 			>

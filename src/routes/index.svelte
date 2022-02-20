@@ -3,7 +3,7 @@
 </script>
 
 <script>
-	import Welcome from '$lib/Welcome.svelte'
+	import Welcome from './Welcome.svelte'
 	import { session } from '$app/stores'
 </script>
 
@@ -91,24 +91,3 @@
 {:else}
 	<Welcome />
 {/if}
-
-<style>
-	.content {
-		max-width: 880px;
-		margin: 20px auto;
-		padding: 40px;
-	}
-
-	h1 {
-		width: 100%;
-		text-align: center;
-	}
-	pre code {
-		background-color: #eee;
-		border: 1px solid #999;
-		display: block;
-		padding: 20px;
-		max-width: 100%;
-		margin: 10px auto;
-	}
-</style>
