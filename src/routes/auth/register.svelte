@@ -64,9 +64,11 @@
 	>
 		<form class="space-y-6" on:submit|preventDefault={register}>
 			{#if message}
-				<Alert alertId="alert-green" color="green" closeBtn="true">
-					{message}
-				</Alert>
+				<div class="mt-6">
+					<Alert alertId="alert-green" color="green" closeBtn="true">
+						{message}
+					</Alert>
+				</div>
 			{/if}
 			<div class="heading">
 				<a class="back" href="/"><i class="bi bi-arrow-left" /></a>
@@ -118,7 +120,11 @@
 				/>
 			</div>
 			{#if error}
-				<p>{error}</p>
+				<div class="mt-6">
+					<Alert alertId="alert-green" color="red" closeBtn="true">
+						{error}
+					</Alert>
+				</div>
 			{/if}
 			<div class="flex items-start">
 				{#if rememberMe}

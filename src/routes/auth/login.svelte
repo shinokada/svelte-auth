@@ -13,6 +13,7 @@
 <script>
 	import { session } from '$app/stores'
 	import { goto } from '$app/navigation'
+	import { Alert } from 'svelte-flow'
 	// Variables bound to respective inputs via bind:value
 	let email
 	let password
@@ -89,7 +90,11 @@
 				/>
 			</div>
 			{#if error}
-				<p>{error}</p>
+				<div class="mt-6">
+					<Alert alertId="alert-green" color="red" closeBtn="true">
+						{error}
+					</Alert>
+				</div>
 			{/if}
 			<button
 				type="submit"

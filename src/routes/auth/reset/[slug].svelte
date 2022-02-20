@@ -1,6 +1,7 @@
 <script>
 	import { page } from '$app/stores'
 	import jwt_decode from 'jwt-decode'
+	import { Alert } from 'svelte-flow'
 
 	let password
 	let confirmpw
@@ -69,10 +70,18 @@
 			/>
 			<input type="hidden" required name="email" bind:value={email} />
 			{#if error}
-				<p>{error}</p>
+				<div class="mt-6">
+					<Alert alertId="alert-green" color="red" closeBtn="true">
+						{error}
+					</Alert>
+				</div>
 			{/if}
 			{#if message}
-				<p>{message}</p>
+				<div class="mt-6">
+					<Alert alertId="alert-green" color="green" closeBtn="true">
+						{message}
+					</Alert>
+				</div>
 			{/if}
 			<button
 				class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
