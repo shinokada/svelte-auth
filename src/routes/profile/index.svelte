@@ -30,6 +30,7 @@
 	import { onMount } from 'svelte'
 	import { goto } from '$app/navigation'
 	import { session } from '$app/stores'
+	import { Button } from 'flowbite-svelte'
 
 	export let email
 	export let name
@@ -57,28 +58,9 @@
 </svelte:head>
 
 <div class="content">
-	<h1>Profile</h1>
-	<p>Hello {name} you are logged in with the email {email}</p>
-	<button on:click={logout}>log out</button>
+	<h1 class="text-xl font-medium text-gray-900 dark:text-white">Profile</h1>
+	<p class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
+		Hello {name} you are logged in with the email {email}
+	</p>
+	<Button on:handleClick={logout} name="Log out">log out</Button>
 </div>
-
-<style>
-	.content {
-		padding: 40px;
-	}
-
-	h1 {
-		margin-top: 0;
-	}
-
-	button {
-		background: var(--bg-color-2);
-		padding: 0.7rem 1.5rem;
-		border-radius: 12px;
-		color: #fff;
-	}
-	button:hover {
-		color: #000;
-		background-color: rgb(154, 211, 242);
-	}
-</style>

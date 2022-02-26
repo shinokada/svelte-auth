@@ -1,6 +1,6 @@
 <script>
 	import { page } from '$app/stores'
-	import { Alert } from 'svelte-flow'
+	import { Alert } from 'flowbite-svelte'
 	const confirmationCode = $page.params.slug
 	let email
 	let error
@@ -40,7 +40,7 @@
 	>
 		<form class="space-y-6" on:submit|preventDefault={forgot}>
 			<div class="heading">
-				<a class="back" href="/"><i class="bi bi-arrow-left" /></a>
+				<a class="back" href="/"><i class="bi bi-arrow-left dark:text-white" /></a>
 				<h2 class="text-xl font-medium text-gray-900 dark:text-white">Forgot password</h2>
 			</div>
 			<div>

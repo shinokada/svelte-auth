@@ -11,8 +11,10 @@
 </script>
 
 <script>
-	import { Alert } from 'svelte-flow'
+	import { Alert } from 'flowbite-svelte'
 	let error
+	// errors is available from register.js
+	export let errors
 	// Variables bound to respective inputs via bind:value
 	let email
 	let password
@@ -43,11 +45,12 @@
 				email = ''
 				name = ''
 				password = ''
-			} else {
-				const data = await res.json()
-				// console.log('message: ', data.message)
-				error = data.message
 			}
+			// } else {
+			// 	const data = await res.json()
+			// 	// console.log('message: ', data.message)
+			// 	error = data.message
+			// }
 		} catch (err) {
 			console.log(err)
 			error = 'RES001: An error occured.'
@@ -72,7 +75,7 @@
 				</div>
 			{/if}
 			<div class="heading">
-				<a class="back" href="/"><i class="bi bi-arrow-left" /></a>
+				<a class="back" href="/"><i class="bi bi-arrow-left dark:text-white" /></a>
 				<h3 class="text-xl font-medium text-gray-900 dark:text-white">Register</h3>
 			</div>
 			<div>
@@ -120,10 +123,10 @@
 					bind:value={password}
 				/>
 			</div>
-			{#if error}
+			{#if errors}
 				<div class="mt-6">
 					<Alert alertId="alert-green" color="red" closeBtn="true">
-						{error}
+						{errors}
 					</Alert>
 				</div>
 			{/if}

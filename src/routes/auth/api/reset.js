@@ -5,22 +5,23 @@ dotenv.config()
 
 const dbName = process.env['DB_NAME']
 
-export const put = async ( context ) => {
+export const put = async ({ request }) => {
+  const {email, password} = await request.json();
   const client = await clientPromise
   // const db = client.db('Todos')
   const db = client.db(dbName)
   const collection = db.collection('users')
 
 	// Is there a user with such an email?
-  const user = await collection.findOne({ email: context.body.email })
+  const user = await collection.findOne({ email:email })
 
   if (user) {
     // change password and status
 		await collection.updateOne(
-			{ email: context.body.email},
+			{ email: email},
       {
         $set: {
-          password: stringHash(context.body.password),
+          password: stringHash(password),
           status: 'Active'
         }
       }

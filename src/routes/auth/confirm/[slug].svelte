@@ -2,7 +2,7 @@
 	import { onMount } from 'svelte'
 	import { page } from '$app/stores'
 	import { goto } from '$app/navigation'
-	import { Button, Alert } from 'svelte-flow'
+	import { Button, Alert } from 'flowbite-svelte'
 
 	const confirmationCode = $page.params.slug
 	let success

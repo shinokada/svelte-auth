@@ -11,7 +11,7 @@
 				</div>
 			{/if}
 			<div class="heading">
-				<a class="back" href="/"><i class="bi bi-arrow-left" /></a>
+				<a class="back" href="/"><i class="bi bi-arrow-left dark:text-white" /></a>
 				<h3 class="text-xl font-medium text-gray-900 dark:text-white">Register</h3>
 			</div>
 			<div>

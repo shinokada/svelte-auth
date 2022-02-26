@@ -1,5 +1,5 @@
 <script>
-	import { Button } from 'svelte-flow'
+	import { Button } from 'flowbite-svelte'
 </script>
 
 <div class="container mt-4 flex flex-wrap justify-center mx-auto pt-16">

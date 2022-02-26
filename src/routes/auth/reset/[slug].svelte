@@ -1,7 +1,7 @@
 <script>
 	import { page } from '$app/stores'
 	import jwt_decode from 'jwt-decode'
-	import { Alert } from 'svelte-flow'
+	import { Alert } from 'flowbite-svelte'
 
 	let password
 	let confirmpw
@@ -49,8 +49,8 @@
 	>
 		<form class="space-y-6" on:submit|preventDefault={resetpw}>
 			<div class="heading">
-				<a class="back" href="/"><i class="bi bi-arrow-left" /></a>
-				<h2>Reset password</h2>
+				<a class="back" href="/"><i class="bi bi-arrow-left dark:text-white" /></a>
+				<h2 class="text-xl font-medium text-gray-900 dark:text-white">Reset password</h2>
 			</div>
 			<input
 				type="password"
@@ -81,6 +81,11 @@
 					<Alert alertId="alert-green" color="green" closeBtn="true">
 						{message}
 					</Alert>
+					<a
+						href="/auth/login"
+						class="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
+						>Go to Login</a
+					>
 				</div>
 			{/if}
 			<button

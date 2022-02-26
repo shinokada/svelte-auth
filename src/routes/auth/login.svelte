@@ -13,7 +13,7 @@
 <script>
 	import { session } from '$app/stores'
 	import { goto } from '$app/navigation'
-	import { Alert } from 'svelte-flow'
+	import { Alert } from 'flowbite-svelte'
 	// Variables bound to respective inputs via bind:value
 	let email
 	let password
@@ -56,7 +56,7 @@
 	>
 		<form class="space-y-6" on:submit|preventDefault={login}>
 			<div class="heading">
-				<a class="back" href="/"><i class="bi bi-arrow-left" /></a>
+				<a class="back" href="/"><i class="bi bi-arrow-left dark:text-white" /></a>
 				<h2 class="text-xl font-medium text-gray-900 dark:text-white">Login</h2>
 			</div>
 			<div>

@@ -5,12 +5,13 @@ import {clientPromise} from '$lib/index'
 import dotenv from 'dotenv'
 dotenv.config()
 
-export const post = async ({ body }) => {
+export const post = async ({ request }) => {
+  const { email, password } = await request.json();
   const client = await clientPromise
   const dbName = process.env['DB_NAME']
 	const db = client.db(dbName)
 
-	const user = await db.collection('users').findOne({ email: body.email })
+	const user = await db.collection('users').findOne({ email: email })
   
 	if (!user) {
 		return {
@@ -21,7 +22,7 @@ export const post = async ({ body }) => {
 		}
 	}
 
-	if (user.password !== stringHash(body.password)) {
+	if (user.password !== stringHash(password)) {
 		return {
 			status: 401,
 			body: {
@@ -45,7 +46,7 @@ export const post = async ({ body }) => {
 
 	// Set cookie
 	const headers = {
-		'Set-Cookie': cookie.serialize('session_id', cookieId, {
+		'set-cookie': cookie.serialize('session_id', cookieId, {
 			httpOnly: true,
 			maxAge: 60 * 60 * 24 * 30,
 			sameSite: 'strict',

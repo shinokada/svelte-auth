@@ -5,13 +5,14 @@ dotenv.config()
 const mail_method = process.env['MAIL_METHOD']
 const dbName = process.env['DB_NAME']
 
-export const post = async ({ body }) => {
+export const post = async ({ request }) => {
+  const { name, email } = await request.json();
 	const client = await clientPromise
 	// const db = client.db('Todos')
   const db = client.db(dbName)
 
 	// Is there a user with such an email?
-  const user = await db.collection('users').findOne({ email: body.email })
+  const user = await db.collection('users').findOne({ email: email })
 
   if (user) {
     if (mail_method === "mailtrap") {
@@ -25,8 +26,8 @@ export const post = async ({ body }) => {
   
     if (mail_method === "sendgrid") {
       await sendGridForgotEmail(
-        body.name,
-        body.email,
+        name,
+        email,
         user.confirmationCode
       );
         console.log('Registration is emailed.')
@@ -46,8 +47,8 @@ export const post = async ({ body }) => {
 		// headers,
 		body: {
 			user: {
-				name: body.name,
-        email: body.email,
+				name: name,
+        email: email,
         message: "Email sent."
 			}
 		}

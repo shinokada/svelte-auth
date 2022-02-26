@@ -4,7 +4,10 @@ dotenv.config()
 
 const dbName = process.env['DB_NAME']
 
-export const get = async (context) => {
+export const get = async (request) => {
+  // request value from hooks, event.locals.user
+  // do'not use {request} here. You can't get event.locals.user
+  // console.log('body here: ', request)
 	// Connecting to DB
 	// All database code can only run inside async functions as it uses await
 	const client = await clientPromise
@@ -12,7 +15,7 @@ export const get = async (context) => {
   const db = client.db(dbName)
 
 	// Checking for auth coming from hooks' handle({ request, resolve })
-	if (!context.locals.user) {
+	if (!request.locals.user) {
 		return {
 			status: 401,
 			body: {
@@ -21,7 +24,7 @@ export const get = async (context) => {
 		}
 	}
 
-	const user = await db.collection('users').findOne({ _id: context.locals.user.uid })
+	const user = await db.collection('users').findOne({ _id: request.locals.user.uid })
 
 	if (!user) {
 		return {

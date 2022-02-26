@@ -3,7 +3,7 @@ import * as cookie from 'cookie'
 export function post() {
 	return {
 		headers: {
-			'Set-cookie': cookie.serialize('session_id', '', {
+			'set-cookie': cookie.serialize('session_id', '', {
 				httpOnly: true,
 				sameSite: 'strict',
 				path: '/',

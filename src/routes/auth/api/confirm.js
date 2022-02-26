@@ -8,9 +8,10 @@ const dbName = process.env['DB_NAME']
 // todo 
 // if status is Active redirect to home page
 
-export const post = async (context) => {
-  const confirmationCode = JSON.parse(context.body)
-  // console.log('mycode: ', confirmationCode)
+export const post = async ({ request }) => {
+  // console.log('request here: ', request)
+  const confirmationCode = await request.json();
+  // console.log('confirmationcode here: ', confirmationCode)
   try {
     const client = await clientPromise
     // const db = client.db('Todos')
@@ -36,7 +37,7 @@ export const post = async (context) => {
 
       // Set cookie
       const headers = {
-        'Set-Cookie': cookie.serialize('session_id', cookieId, {
+        'set-cookie': cookie.serialize('session_id', cookieId, {
           httpOnly: true,
           maxAge: 60 * 60 * 24 * 30,
           sameSite: 'strict',

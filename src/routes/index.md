@@ -1,3 +1,7 @@
+---
+layout: doc
+---
+
 <script context="module">
 	export const prerender = true
 </script>
@@ -17,7 +21,7 @@
 			<h1 class="w-full text-2xl">Sveltekit-auth</h1>
 
 			<p>
-				Simple Sveltekit-auth app made with <a href="https://kit.svelte.dev/">Sveltekit</a>
+				Sveltekit-auth app made with <a href="https://kit.svelte.dev/">Sveltekit</a>
 				and
 				<a href="https://www.mongodb.com/atlas/database">Mongodb Cloud</a> on top of
 				<a href="https://github.com/refact0r/sveltekit-todos">refact0r/sveltekit-todos</a>.
