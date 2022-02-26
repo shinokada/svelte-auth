@@ -1,3 +1,67 @@
+<script context="module">
+	export async function load({ session }) {
+		if (session.user) {
+			return {
+				status: 302,
+				redirect: '/'
+			}
+		}
+		return {}
+	}
+</script>
+
+<script>
+	import { Alert } from 'flowbite-svelte'
+	let error
+	// errors is available from register.js
+	export let errors
+	// Variables bound to respective inputs via bind:value
+	let email
+	let password
+	let name
+	let lostPasswordLink
+	let loginLink = 'true'
+
+	let message
+	let rememberMe
+
+	const register = async () => {
+		try {
+			// POST method to src/routes/auth/register.js endpoint
+			const res = await fetch('/auth/api/register', {
+				method: 'POST',
+				body: JSON.stringify({
+					email,
+					password,
+					name
+				}),
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			})
+
+			if (res.ok) {
+				message = 'User was registered successfully! Please check your email'
+				email = ''
+				name = ''
+				password = ''
+			}
+			// } else {
+			// 	const data = await res.json()
+			// 	// console.log('message: ', data.message)
+			// 	error = data.message
+			// }
+		} catch (err) {
+			console.log(err)
+			error = 'RES001: An error occured.'
+		}
+	}
+</script>
+
+<svelte:head>
+	<title>Register</title>
+</svelte:head>
+
 <div class="container mt-4 flex flex-wrap justify-center mx-auto pt-16">
 	<div
 		class="p-4 max-w-sm bg-white rounded-lg border border-gray-200 shadow-md sm:p-6 lg:p-8 dark:bg-gray-800 dark:border-gray-700 w-full"
@@ -59,10 +123,10 @@
 					bind:value={password}
 				/>
 			</div>
-			{#if error}
+			{#if errors}
 				<div class="mt-6">
 					<Alert alertId="alert-green" color="red" closeBtn="true">
-						{error}
+						{errors}
 					</Alert>
 				</div>
 			{/if}

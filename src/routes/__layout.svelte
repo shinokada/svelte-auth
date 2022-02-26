@@ -1,8 +1,6 @@
 <script>
 	import '../app.css'
-	import 'flowbite/dist/flowbite.css'
 	import { session, page } from '$app/stores'
-	import { fly } from 'svelte/transition'
 	import { DarkMode, Navbar } from 'flowbite-svelte'
 	let btnClass =
 		'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 fixed left-3 top-3 z-50'
@@ -54,25 +52,16 @@
 <DarkMode {btnClass} />
 
 {#if $session.user}
-	<main class="container mx-auto px-16 py-4 max-w-xl">
+	<main class="container mx-auto px-16 py-4 max-w-4xl">
 		<Navbar menus={loggedInMenus} {sitename} {logo} {alt} {textsize} />
-
-		<div
-			class="my-8"
-			in:fly={{ y: -5, duration: 200, delay: 200 }}
-			out:fly|local={{ y: 5, duration: 200 }}
-		>
+		<div class="my-8">
 			<slot />
 		</div>
 	</main>
 {:else}
-	<div class="container mx-auto px-16 pt-4 max-w-xl">
-		<Navbar {menus} {sitename} {logo} />
-		<div
-			class="w-full h-full my-8"
-			in:fly={{ x: -5, duration: 200, delay: 200 }}
-			out:fly|local={{ x: 5, duration: 200 }}
-		>
+	<div class="container mx-auto px-16 pt-4 max-w-4xl">
+		<Navbar {menus} {sitename} {logo} {alt} {textsize} />
+		<div class="w-full h-full my-8">
 			<slot />
 		</div>
 	</div>

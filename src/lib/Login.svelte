@@ -1,3 +1,15 @@
+<script context="module">
+	export async function load({ session }) {
+		if (session.user) {
+			return {
+				status: 302,
+				redirect: '/'
+			}
+		}
+		return {}
+	}
+</script>
+
 <script>
 	import { session } from '$app/stores'
 	import { goto } from '$app/navigation'
@@ -79,7 +91,7 @@
 			</div>
 			{#if error}
 				<div class="mt-6">
-					<Alert alertId="alert-green" color="red" closeBtn="true">
+					<Alert alertId="alert-red" color="red" closeBtn="true">
 						{error}
 					</Alert>
 				</div>
