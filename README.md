@@ -59,3 +59,13 @@ If you are not using Mailtrap, you need to update the `src/lib/nodemailer.js` fi
 ```sh
 npm run dev
 ```
+
+### Testing mermaid
+
+```mermaid
+  graph TD;
+      A-->B;
+      A-->C;
+      B-->D;
+      C-->D;
+```

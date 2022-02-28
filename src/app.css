@@ -5,3 +5,24 @@
 @tailwind components;
 
 @tailwind utilities;
+
+@layer base {
+    *{
+       @apply dark:text-white;
+    }
+    h1 {
+      @apply text-3xl  w-full py-8;
+    }
+    h2 {
+      @apply text-2xl  w-full py-4;
+    }
+    h3 {
+      @apply text-xl  w-full py-4;
+    }
+    a {
+      @apply text-blue-600 underline;
+    }
+    p {
+        @apply  py-4 text-sm;
+    }
+  }

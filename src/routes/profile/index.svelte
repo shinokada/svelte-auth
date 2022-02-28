@@ -3,7 +3,7 @@
 		if (!session.user) {
 			return {
 				status: 302,
-				redirect: '/login'
+				redirect: '/auth/login'
 			}
 		}
 
@@ -27,22 +27,12 @@
 </script>
 
 <script>
-	import { onMount } from 'svelte'
 	import { goto } from '$app/navigation'
 	import { session } from '$app/stores'
 	import { Button } from 'flowbite-svelte'
 
 	export let email
 	export let name
-	/*
-	let name
-
-	onMount(async () => {
-		const res = await fetch('/user')
-		const user = await res.json()
-		name = user.name
-	})
-    */
 
 	async function logout() {
 		const res = await fetch('/auth/api/logout', {
