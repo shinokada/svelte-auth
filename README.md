@@ -1,71 +1,40 @@
-# sveltekit-auth
+# create-svelte
 
-Simple Sveltekit-auth app made with [Sveltekit](https://kit.svelte.dev/) and Mongodb Cloud top of [refact0r/sveltekit-todos](https://github.com/refact0r/sveltekit-todos).
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
 
-This includes:
+## Creating a project
 
-- Registration
-- Login/Logout
-- Confirm email
-- Reset password
+If you're seeing this, you've probably already done this step. Congrats!
 
-## Minimum dependencies
+```bash
+# create a new project in the current directory
+npm init svelte@next
 
-```sh
-- "@lukeed/uuid": "^2.0.0",
-- "cookie": "^0.4.1",
-- "dotenv": "^10.0.0",
-- "jsonwebtoken": "^8.5.1",
-- "jwt-decode": "^3.1.2",
-- "mongodb": "^4.1.4",
-- "nodemailer": "^6.7.2",
-- "nodemailer-sendgrid-transport": "^0.2.0",
-- "string-hash": "^1.1.3",
-- "uuid": "^8.3.2"
+# create a new project in my-app
+npm init svelte@next my-app
 ```
 
-## Geting started
+> Note: the `@next` is temporary
 
-### Clone and run npm install
+## Developing
 
-```sh
-git clone git@github.com:shinokada/sveltekit-auth.git
-cd sveltekit-auth
-npm install
-```
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-### Change `.env.example` to `.env` and update it
-
-```sh
-MONGODB_URI="your-mongodb-uri"
-NODE_ENV="development"
-SECRET="your-secret"
-MAILTRAP_USER="your-mailtrap-user"
-MAILTRAP_PASS="your-mail-trap-pass"
-DEV_URL="http://localhost:3000"
-EMAIL_FROM="hello@example.com"
-NAME_FROM="John Doe"
-SENDGRIP_API="sendgrid-api-key"
-```
-
-You need to have a MongoDB running or create [a free new account](https://account.mongodb.com/account/login).
-
-I used Mailtrap for development. You need to create [a free new account](https://mailtrap.io/) for development.
-
-If you are not using Mailtrap, you need to update the `src/lib/nodemailer.js` file.
-
-### Run npm run dev
-
-```sh
+```bash
 npm run dev
+
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
 ```
 
-### Testing mermaid
+## Building
 
-```mermaid
-  graph TD;
-      A-->B;
-      A-->C;
-      B-->D;
-      C-->D;
+To create a production version of your app:
+
+```bash
+npm run build
 ```
+
+You can preview the production build with `npm run preview`.
+
+> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
