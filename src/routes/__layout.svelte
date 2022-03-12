@@ -1,7 +1,8 @@
-<script>
+<script lang="ts">
 	import '../app.css';
-	import { session, page } from '$app/stores';
+	import { session } from '$app/stores';
 	import { DarkMode, Navbar } from 'flowbite-svelte';
+
 	let btnClass =
 		'text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 fixed left-3 top-3 z-50';
 	let loggedInMenus = [
@@ -40,6 +41,7 @@
 	let logo = '/images/mkdir-logo.webp';
 	let alt = 'Svelte-auth';
 	let textsize = 'text-lg';
+	// console.log('session: ', $session);
 </script>
 
 <DarkMode {btnClass} />

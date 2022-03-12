@@ -1,17 +1,16 @@
-<script>
+<script lang="ts">
 	import { page } from '$app/stores';
 	import jwt_decode from 'jwt-decode';
 	import { Alert } from 'flowbite-svelte';
 
-	let password;
-	let confirmpw;
-	let email;
-	let error;
-	let message;
-	let decoded;
+	let password: string;
+	let confirmpw: string;
+	let email: string;
+	let error: string;
+	let message: string;
 
 	const token = $page.params.slug;
-	decoded = jwt_decode(token);
+	let decoded = jwt_decode(token);
 	email = decoded.email;
 
 	const resetpw = async () => {
@@ -71,14 +70,14 @@
 			<input type="hidden" required name="email" bind:value={email} />
 			{#if error}
 				<div class="mt-6">
-					<Alert alertId="alert-green" color="red" closeBtn="true">
+					<Alert alertId="alert-green" color="red" closeBtn>
 						{error}
 					</Alert>
 				</div>
 			{/if}
 			{#if message}
 				<div class="mt-6">
-					<Alert alertId="alert-green" color="green" closeBtn="true">
+					<Alert alertId="alert-green" color="green" closeBtn>
 						{message}
 					</Alert>
 					<a

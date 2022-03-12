@@ -1,20 +1,20 @@
-<script context="module">
+<script context="module" lang="ts">
 	export async function load({ fetch, session }) {
 		if (!session.user) {
 			return {
 				status: 302,
 				redirect: '/auth/login'
-			}
+			};
 		}
 
 		if (!session.user.name) {
-			const res = await fetch('/user')
-			const user = await res.json()
+			const res = await fetch('/user');
+			const user = await res.json();
 			session.user = {
 				uid: user._id,
 				name: user.name,
 				email: user.email
-			}
+			};
 		}
 
 		return {
@@ -22,24 +22,24 @@
 				name: session.user.name,
 				email: session.user.email
 			}
-		}
+		};
 	}
 </script>
 
-<script>
-	import { goto } from '$app/navigation'
-	import { session } from '$app/stores'
-	import { Button } from 'flowbite-svelte'
+<script lang="ts">
+	import { goto } from '$app/navigation';
+	import { session } from '$app/stores';
+	import { Button } from 'flowbite-svelte';
 
-	export let email
-	export let name
+	export let email: string;
+	export let name: string;
 
 	async function logout() {
 		const res = await fetch('/auth/api/logout', {
 			method: 'POST'
-		})
-		$session.user = null
-		goto('/')
+		});
+		$session.user = null;
+		goto('/');
 	}
 </script>
 
@@ -52,5 +52,5 @@
 	<p class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">
 		Hello {name} you are logged in with the email {email}
 	</p>
-	<Button on:handleClick={logout} name="Log out">log out</Button>
+	<Button on:click={logout} name="Log out" />
 </div>

@@ -4,26 +4,26 @@
 			return {
 				status: 302,
 				redirect: '/'
-			}
+			};
 		}
-		return {}
+		return {};
 	}
 </script>
 
 <script>
-	import { Alert } from 'flowbite-svelte'
-	let error
+	import { Alert } from 'flowbite-svelte';
+	let error;
 	// errors is available from register.js
-	export let errors
+	export let errors;
 	// Variables bound to respective inputs via bind:value
-	let email
-	let password
-	let name
-	let lostPasswordLink
-	let loginLink = 'true'
+	let email;
+	let password;
+	let name;
+	let lostPasswordLink;
+	let loginLink = 'true';
 
-	let message
-	let rememberMe
+	let message;
+	let rememberMe;
 
 	const register = async () => {
 		try {
@@ -38,13 +38,13 @@
 				headers: {
 					'Content-Type': 'application/json'
 				}
-			})
+			});
 
 			if (res.ok) {
-				message = 'User was registered successfully! Please check your email'
-				email = ''
-				name = ''
-				password = ''
+				message = 'User was registered successfully! Please check your email';
+				email = '';
+				name = '';
+				password = '';
 			}
 			// } else {
 			// 	const data = await res.json()
@@ -52,10 +52,10 @@
 			// 	error = data.message
 			// }
 		} catch (err) {
-			console.log(err)
-			error = 'RES001: An error occured.'
+			console.log(err);
+			error = 'RES001: An error occured.';
 		}
-	}
+	};
 </script>
 
 <svelte:head>
@@ -69,7 +69,7 @@
 		<form class="space-y-6" on:submit|preventDefault={register}>
 			{#if message}
 				<div class="mt-6">
-					<Alert alertId="alert-green" color="green" closeBtn="true">
+					<Alert alertId="alert-green" color="green" closeBtn>
 						{message}
 					</Alert>
 				</div>
@@ -79,9 +79,7 @@
 				<h3 class="text-xl font-medium text-gray-900 dark:text-white">Register</h3>
 			</div>
 			<div>
-				<label
-					for="name"
-					class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+				<label for="name" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
 					>Name</label
 				>
 				<input
@@ -94,9 +92,7 @@
 				/>
 			</div>
 			<div>
-				<label
-					for="email"
-					class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+				<label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
 					>Email</label
 				>
 				<input
@@ -125,7 +121,7 @@
 			</div>
 			{#if errors}
 				<div class="mt-6">
-					<Alert alertId="alert-green" color="red" closeBtn="true">
+					<Alert alertId="alert-green" color="red" closeBtn>
 						{errors}
 					</Alert>
 				</div>
@@ -143,9 +139,7 @@
 							/>
 						</div>
 						<div class="ml-3 text-sm">
-							<label
-								for="remember"
-								class="font-medium text-gray-900 dark:text-gray-300"
+							<label for="remember" class="font-medium text-gray-900 dark:text-gray-300"
 								>Remember me</label
 							>
 						</div>
@@ -168,8 +162,7 @@
 			{#if loginLink}
 				<a
 					href="/auth/login"
-					class="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
-					>Go to Login</a
+					class="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500">Go to Login</a
 				>
 			{/if}
 		</form>
