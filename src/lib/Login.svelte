@@ -4,24 +4,24 @@
 			return {
 				status: 302,
 				redirect: '/'
-			}
+			};
 		}
-		return {}
+		return {};
 	}
 </script>
 
-<script>
-	import { session } from '$app/stores'
-	import { goto } from '$app/navigation'
-	import { Alert } from 'flowbite-svelte'
+<script lang="ts">
+	import { session } from '$app/stores';
+	import { goto } from '$app/navigation';
+	import { Alert } from 'flowbite-svelte';
 	// Variables bound to respective inputs via bind:value
-	let email
-	let password
-	let error
+	let email: string;
+	let password: string;
+	let error: string;
 	// let notice
 	const login = async () => {
 		// Reset error from previous failed attempts
-		error = undefined
+		error = undefined;
 		// POST method to src/routes/auth/login.js endpoint
 		try {
 			const res = await fetch('/auth/api/login', {
@@ -33,21 +33,20 @@
 				headers: {
 					'Content-Type': 'application/json'
 				}
-			})
+			});
 			if (res.ok) {
-				const data = await res.json()
-				$session.user = data.user
-				goto('/')
+				const data = await res.json();
+				$session.user = data.user;
+				goto('/');
 			} else {
-				const data = await res.json()
-				// console.log(data)
-				error = `LOS001: ${data.message}`
+				const data = await res.json();
+				error = `LOS001: ${data.message}`;
 			}
 		} catch (err) {
-			console.log(err)
-			error = 'LOS002: Pleas try it again.'
+			console.log(err);
+			error = 'LOS002: Pleas try it again.';
 		}
-	}
+	};
 </script>
 
 <div class="container mt-4 flex flex-wrap justify-center mx-auto pt-16">
@@ -60,9 +59,7 @@
 				<h2 class="text-xl font-medium text-gray-900 dark:text-white">Login</h2>
 			</div>
 			<div>
-				<label
-					for="email"
-					class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+				<label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
 					>Email</label
 				>
 				<input
@@ -91,7 +88,7 @@
 			</div>
 			{#if error}
 				<div class="mt-6">
-					<Alert alertId="alert-red" color="red" closeBtn="true">
+					<Alert alertId="alert-red" color="red" closeBtn>
 						{error}
 					</Alert>
 				</div>

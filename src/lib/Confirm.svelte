@@ -1,30 +1,27 @@
-<script>
-	import { onMount } from 'svelte'
-	import { page } from '$app/stores'
-	import { goto } from '$app/navigation'
-	import { Button, Alert, Spinner } from 'flowbite-svelte'
+<script lang="ts">
+	import { onMount } from 'svelte';
+	import { page } from '$app/stores';
+	import { goto } from '$app/navigation';
+	import { Button, Alert, Spinner } from 'flowbite-svelte';
 
-	const confirmationCode = $page.params.slug
-	let success
-	let error
+	const confirmationCode = $page.params.slug;
+	let success: string;
+	let error: string;
 
 	onMount(async () => {
 		const res = await fetch('/auth/api/confirm', {
 			method: 'POST',
 			body: JSON.stringify(confirmationCode)
-		})
+		});
 		if (res.ok) {
 			// get user details and save it to session then redirect to login
 			// const res = await fetch('/user')
-			const json = await res.json()
-			// console.log('res: ', json)
-			success = 'Please log in.'
+			const json = await res.json();
+			success = 'Please log in.';
 		} else {
-			error = 'Not able to find your details.'
+			error = 'Not able to find your details.';
 		}
-		// const user = await res.json()
-		// name = user.name
-	})
+	});
 </script>
 
 <div class="container mt-4 flex flex-wrap justify-center mx-auto pt-16">
@@ -39,10 +36,10 @@
 				<Button name="Go to Login" textSize="text-sm" />
 			</a>
 		{:else}
-			<Spinner />
+			<Spinner align="text-center" />
 		{/if}
 		{#if error}
-			<Alert alertId="alert-red" color="red" closeBtn="true">{error}</Alert>
+			<Alert alertId="alert-red" color="red" closeBtn>{error}</Alert>
 		{/if}
 	</div>
 </div>

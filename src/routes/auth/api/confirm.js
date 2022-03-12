@@ -9,9 +9,7 @@ const dbName = process.env['DB_NAME']
 // if status is Active redirect to home page
 
 export const post = async ({ request }) => {
-  // console.log('request here: ', request)
   const confirmationCode = await request.json();
-  // console.log('confirmationcode here: ', confirmationCode)
   try {
     const client = await clientPromise
     // const db = client.db('Todos')

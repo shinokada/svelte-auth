@@ -19,7 +19,7 @@
 		},
 		{
 			name: 'GitHub',
-			href: 'https://github.com/shinokada/sveltekit-auth-app'
+			href: 'https://github.com/shinokada/svelte-auth'
 		}
 	];
 	let menus = [
@@ -33,7 +33,7 @@
 		},
 		{
 			name: 'GitHub',
-			href: 'https://github.com/shinokada/sveltekit-auth-app'
+			href: 'https://github.com/shinokada/svelte-auth'
 		}
 	];
 	let sitename = 'Svelte-auth';

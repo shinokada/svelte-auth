@@ -1,18 +1,18 @@
 <script>
-	import { page } from '$app/stores'
-	import jwt_decode from 'jwt-decode'
-	import { Alert } from 'flowbite-svelte'
+	import { page } from '$app/stores';
+	import jwt_decode from 'jwt-decode';
+	import { Alert } from 'flowbite-svelte';
 
-	let password
-	let confirmpw
-	let email
-	let error
-	let message
-	let decoded
+	let password;
+	let confirmpw;
+	let email;
+	let error;
+	let message;
+	let decoded;
 
-	const token = $page.params.slug
-	decoded = jwt_decode(token)
-	email = decoded.email
+	const token = $page.params.slug;
+	decoded = jwt_decode(token);
+	email = decoded.email;
 
 	const resetpw = async () => {
 		try {
@@ -25,22 +25,22 @@
 				headers: {
 					'Content-Type': 'application/json'
 				}
-			})
+			});
 
 			if (res.ok) {
-				message = 'Your password is updated. Please go to login.'
+				message = 'Your password is updated. Please go to login.';
 			} else {
-				const data = await res.json()
-				console.log('message: ', data.message)
-				error = data.message
+				const data = await res.json();
+				// console.log('message: ', data.message)
+				error = data.message;
 			}
 		} catch (err) {
-			console.log(err)
-			error = `RES001: An error occured. ${err}`
+			console.log(err);
+			error = `RES001: An error occured. ${err}`;
 		}
-		password = ''
-		confirmpw = ''
-	}
+		password = '';
+		confirmpw = '';
+	};
 </script>
 
 <div class="container mt-4 flex flex-wrap justify-center mx-auto pt-16">
@@ -83,8 +83,7 @@
 					</Alert>
 					<a
 						href="/auth/login"
-						class="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500"
-						>Go to Login</a
+						class="ml-auto text-sm text-blue-700 hover:underline dark:text-blue-500">Go to Login</a
 					>
 				</div>
 			{/if}

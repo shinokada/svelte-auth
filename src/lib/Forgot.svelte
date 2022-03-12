@@ -1,11 +1,11 @@
-<script>
-	import { page } from '$app/stores'
-	import { Alert } from 'flowbite-svelte'
-	const confirmationCode = $page.params.slug
-	let email
-	let error
-	let message
-	let data
+<script lang="ts">
+	import { page } from '$app/stores';
+	import { Alert } from 'flowbite-svelte';
+	const confirmationCode = $page.params.slug;
+	let email: string;
+	let error: string;
+	let message: string;
+	let data;
 
 	const forgot = async () => {
 		try {
@@ -17,21 +17,21 @@
 				headers: {
 					'Content-Type': 'application/json'
 				}
-			})
+			});
 
 			if (res.ok) {
-				message = 'Please check your email'
-				email = ''
+				message = 'Please check your email';
+				email = '';
 			} else {
-				const data = await res.json()
-				console.log('message: ', data.message)
-				error = data.message
+				data = await res.json();
+				console.log('message: ', data.message);
+				error = data.message;
 			}
 		} catch (err) {
-			console.log(err)
-			error = `FOS001: An error occured. ${err}`
+			console.log(err);
+			error = `FOS001: An error occured. ${err}`;
 		}
-	}
+	};
 </script>
 
 <div class="container mt-4 flex flex-wrap justify-center mx-auto pt-16">
@@ -44,9 +44,7 @@
 				<h2 class="text-xl font-medium text-gray-900 dark:text-white">Forgot password</h2>
 			</div>
 			<div>
-				<label
-					for="email"
-					class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
+				<label for="email" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300"
 					>Email</label
 				>
 				<input
@@ -59,21 +57,21 @@
 				/>
 				{#if data}
 					<div class="mt-6">
-						<Alert alertId="alert-green" color="yellow" closeBtn="true">
+						<Alert alertId="alert-green" color="yellow" closeBtn>
 							{data}
 						</Alert>
 					</div>
 				{/if}
 				{#if message}
 					<div class="mt-6">
-						<Alert alertId="alert-green" color="green" closeBtn="true">
+						<Alert alertId="alert-green" color="green" closeBtn>
 							{message}
 						</Alert>
 					</div>
 				{/if}
 				{#if error}
 					<div class="mt-6">
-						<Alert alertId="alert-green" color="red" closeBtn="true">
+						<Alert alertId="alert-green" color="red" closeBtn>
 							{error}
 						</Alert>
 					</div>
