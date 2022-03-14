@@ -11,7 +11,7 @@ Sveltekit-auth app made with <a href="https://kit.svelte.dev/">Sveltekit</a> and
   <li>Reset password</li>
 </ul>
 
-## Geting started
+## Geting started one by one
 
 Install SvelteKit:
 
@@ -40,12 +40,18 @@ Install Flowbite and Flowbite-svelte
 npm i -D flowbite flowbite-svelte
 ```
 
-### Clone and run npm install
+
+
+```sh
+npm i -D @lukeed/uuid @sendgrid/mail cookie dotenv jsonwebtoken jwt-decode mongodb nodemailer nodemailer-sendgrid string-hash uuid
+```
+
+## Clone
 
 ```
 git clone git@github.com:shinokada/svelte-auth.git 
 cd svelte-auth 
-npm i
+npm install
 ```
 
 ### Change `.env.example` to `.env` and update it
