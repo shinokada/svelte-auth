@@ -1,6 +1,6 @@
 {
 	"name": "@codewithshin/svelte-auth",
-	"version": "0.1.1",
+	"version": "0.1.2",
 	"description": "Register, Login, Forgot password, Reset password components using Sendgrid and MongoDB.",
 	"author": {
 		"name": "Shinichi Okada",
