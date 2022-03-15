@@ -8,6 +8,7 @@ export { default as Confirm } from './Confirm.svelte'
 export { default as Forgot } from './Forgot.svelte'
 export { default as Login } from './Login.svelte'
 export { default as Register } from './Register.svelte'
+export { default as Reset } from './Reset.svelte'
 
 
 export {clientPromise, sendForgotEmail, sendConfirmationEmail, sendGridConfirmationEmail, sendGridForgotEmail, errorStore}
